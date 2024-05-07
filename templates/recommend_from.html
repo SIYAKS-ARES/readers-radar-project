@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommendation Form</title>
+</head>
+<body>
+    <h1>Recommendation Form</h1>
+    <form action="/recommend" method="post">
+        <label for="tag">Select a Tag:</label>
+        <select name="tag" id="tag">
+            {% for tag in top_tags %}
+                <option value="{{ tag }}">{{ tag }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
