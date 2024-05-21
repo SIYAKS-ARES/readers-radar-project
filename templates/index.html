@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Recommendation App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Book Recommendation App!</h1>
+    <p>Click the button below to get a book recommendation based on a tag:</p>
+    <a href="{{ url_for('recommend') }}"><button>Get Recommendation</button></a>
+</body>
+</html>
