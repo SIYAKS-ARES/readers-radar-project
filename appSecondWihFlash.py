@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import pandas as pd
 import numpy as np
+
+# For selecting kernel on py files; press cmd + shift + P then choose "Select Interpreter"
 
 app = Flask(__name__)
 
@@ -32,13 +34,9 @@ def recommend_book(filtered_books, books):
     if filtered_books.empty:
         print("No books were found associated with the selected tag.")
         return ""
-    elif len(filtered_books) > 1:
-        random_book_id = np.random.choice(filtered_books['goodreads_book_id'])
-        recommended_book = books.loc[books['book_id'] == random_book_id, 'title'].values[0]
-        return recommended_book
-    else:
-        recommended_book = books.loc[books['book_id'] == filtered_books['goodreads_book_id'].values[0], 'title'].values[0]
-        return recommended_book
+    random_book_id = np.random.choice(filtered_books['goodreads_book_id'])
+    recommended_book_title = books.loc[books['book_id'] == random_book_id, 'title'].values[0]
+    return recommended_book_title
 
 @app.route('/')
 def index():
@@ -49,14 +47,17 @@ def recommend():
     if request.method == 'GET':
         top_tag_ids = book_tags['tag_id'].value_counts().head(10).index
         top_tag_names = tags[tags['tag_id'].isin(top_tag_ids)]['tag_name']
-        print("Top tags:", top_tag_names)
+        print("Top tags:", top_tag_names)  # Corrected line
         return render_template('recommend_form.html', top_tags=top_tag_names)
     elif request.method == 'POST':
         selected_tag = request.form['tag']
         print("Selected tag:", selected_tag)
         filtered_books = filter_books_by_tag(book_tags, tags, selected_tag)
-        recommended_book = recommend_book(filtered_books, books)
-        print("Recommended book:", recommended_book)
+        if filtered_books.empty:
+            flash('No books were found associated with the selected tag.', 'error')
+        else:
+            recommended_book = recommend_book(filtered_books, books)
+            flash(f'The recommended book is: {recommended_book}', 'success')
         return render_template('result.html', recommended_book=recommended_book)
 
 if __name__ == '__main__':
