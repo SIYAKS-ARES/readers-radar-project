@@ -1,25 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommended Book</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 <body>
-    {% extends 'base.html' %}
-    {% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">{{ message }}</div>
-        {% endfor %}
+    <h1>Recommended Book:</h1>
+    {% if recommended_book %}
+        {% if recommended_book == "No book found for the selected tag." %}
+            <p>{{ recommended_book }}</p>
+        {% elif recommended_book == "Multiple books found for the selected tag." %}
+            <p>{{ recommended_book }}</p>
+        {% else %}
+            <p>{{ recommended_book }}</p>
         {% endif %}
-        {% endwith %}
-        <h1>Recommended Book:</h1>
-        <p>{{ recommended_book }}</p>
-    </div>
-    {% endblock %}
+    {% else %}
+        <p>No books were found associated with the selected tag.</p>
+    {% endif %}
 </body>
 </html>
