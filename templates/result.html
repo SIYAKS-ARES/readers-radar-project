@@ -6,13 +6,11 @@
 <body>
     <h1>Recommended Book:</h1>
     {% if recommended_book %}
-        {% if recommended_book == "No book found for the selected tag." %}
-            <p>{{ recommended_book }}</p>
-        {% elif recommended_book == "Multiple books found for the selected tag." %}
-            <p>{{ recommended_book }}</p>
-        {% else %}
-            <p>{{ recommended_book }}</p>
-        {% endif %}
+        <p>Title: {{ recommended_book['title'] }}</p>
+        <p>Book ID: {{ recommended_book['book_id'] }}</p>
+        <p>Authors: {{ recommended_book['authors'] }}</p>
+        <p>Publication Year: {{ recommended_book['original_publication_year'] }}</p>
+        <!-- Here we can add more details as needed -->
     {% else %}
         <p>No books were found associated with the selected tag.</p>
     {% endif %}
