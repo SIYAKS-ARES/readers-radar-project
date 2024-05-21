@@ -60,35 +60,5 @@ def recommend():
             flash(f'The recommended book is: {recommended_book}', 'success')
         return render_template('result.html', recommended_book=recommended_book)
 
-'''def recommend():
-    if request.method == 'GET':
-        top_tag_ids = book_tags['tag_id'].value_counts().head(10).index
-        top_tag_names = tags[tags['tag_id'].isin(top_tag_ids)]['tag_name']
-        print("Top tags:", top_tag_names)
-        return render_template('recommend_form.html', top_tags=top_tag_names)
-    elif request.method == 'POST':
-        selected_tag = request.form['tag']
-        print("Selected tag:", selected_tag)
-        filtered_books = filter_books_by_tag(book_tags, tags, selected_tag)
-        if filtered_books.empty:
-            flash('No books were found associated with the selected tag.', 'error')
-        else:
-            recommended_book = recommend_book(filtered_books, books)
-            flash(f'The recommended book is: {recommended_book}', 'success')
-        return render_template('result.html', recommended_book=recommended_book)'''
-'''def recommend():
-    if request.method == 'GET':
-        top_tag_ids = book_tags['tag_id'].value_counts().head(10).index
-        top_tag_names = tags[tags['tag_id'].isin(top_tag_ids)]['tag_name']
-        print("Top tags:", top_tag_names)
-        return render_template('recommend_form.html', top_tags=top_tag_names)
-    elif request.method == 'POST':
-        selected_tag = request.form['tag']
-        print("Selected tag:", selected_tag)
-        filtered_books = filter_books_by_tag(book_tags, tags, selected_tag)
-        recommended_book = recommend_book(filtered_books, books)
-        print("Recommended book:", recommended_book)
-        return render_template('result.html', recommended_book=recommended_book)'''
-
 if __name__ == '__main__':
     app.run(debug=True, port=3000)
