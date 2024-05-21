@@ -1,3 +1,5 @@
+# NOTES
+
 import pandas as pd
 
 tags = pd.read_csv('/Users/siyaksares/Developer/GitHub/ReadersRadarProject/tags.csv')
