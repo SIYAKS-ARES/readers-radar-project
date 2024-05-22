@@ -1,0 +1,39 @@
+/* Global Styles */
+body {
+    background-color: #000;
+    color: #FFA500;
+}
+
+.btn-custom {
+    background-color: #FFA500;
+    color: #000;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #D2691E;
+}
+
+/* Form Styles */
+.form-control {
+    background-color: #222;
+    color: #FFA500;
+    border: 1px solid #FFA500;
+}
+
+.form-control:focus {
+    background-color: #333;
+    color: #FFA500;
+    border: 1px solid #FFA500;
+}
+
+/* Card Styles */
+.card {
+    background-color: #222;
+    color: #FFA500;
+    border: 1px solid #FFA500;
+}
+
+.card-title {
+    color: #FFA500;
+}
