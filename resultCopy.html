@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="mb-4">Recommended Book:</h1>
+                {% if recommended_book %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: {{ recommended_book.title }}</h5>
+                            <p class="card-text">Book ID: {{ recommended_book.book_id }}</p>
+                            <p class="card-text">Authors: {{ recommended_book.authors }}</p>
+                            <p class="card-text">Publication Year: {{ recommended_book.original_publication_year }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center">No books were found associated with the selected tag.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<p>This is a paragraph.</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-center mb-4">Recommended Book:</h1>
+                {% if recommended_book %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Title: {{ recommended_book.title }}</h5>
+                            <p class="card-text">Book ID: {{ recommended_book.book_id }}</p>
+                            <p class="card-text">Authors: {{ recommended_book.authors }}</p>
+                            <p class="card-text">Publication Year: {{ recommended_book.original_publication_year }}</p>
+                        </div>
+                    </div>
+                {% else %}
+                    <p class="text-center">No books were found associated with the selected tag.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Recommended Book:</h1>
+        {% if recommended_book %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{ recommended_book.title }}</h5>
+                    <p class="card-text">Book ID: {{ recommended_book.book_id }}</p>
+                    <p class="card-text">Authors: {{ recommended_book.authors }}</p>
+                    <p class="card-text">Publication Year: {{ recommended_book.original_publication_year }}</p>
+                </div>
+            </div>
+        {% else %}
+            <p class="text-center">No books were found associated with the selected tag.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .center-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            margin-top: 20px;
+        }
+        .book-info {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="center-content">
+        <div>
+            <h1 class="mb-4">Recommended Book:</h1>
+            {% if recommended_book %}
+                <p class="book-info"><strong>Title:</strong> {{ recommended_book['title'] }}</p>
+                <p class="book-info"><strong>Book ID:</strong> {{ recommended_book['book_id'] }}</p>
+                <p class="book-info"><strong>Authors:</strong> {{ recommended_book['authors'] }}</p>
+                <p class="book-info"><strong>Publication Year:</strong> {{ recommended_book['original_publication_year'] }}</p>
+            {% else %}
+                <p class="book-info">No books were found associated with the selected tag.</p>
+            {% endif %}
+            <a href="/recommend" class="btn btn-custom btn-lg">Get Another Recommendation</a>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+</head>
+<body>
+    <h1>Recommended Book:</h1>
+    {% if recommended_book %}
+        <p>Title: {{ recommended_book['title'] }}</p>
+        <p>Book ID: {{ recommended_book['book_id'] }}</p>
+        <p>Authors: {{ recommended_book['authors'] }}</p>
+        <p>Publication Year: {{ recommended_book['original_publication_year'] }}</p>
+        <!-- Here we can add more details as needed -->
+    {% else %}
+        <p>No books were found associated with the selected tag.</p>
+    {% endif %}
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recommended Book</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="text-center">
+            <h1>Recommended Book:</h1>
+            {% if recommended_book %}
+                <p><strong>Title:</strong> {{ recommended_book['title'] }}</p>
+                <p><strong>Book ID:</strong> {{ recommended_book['book_id'] }}</p>
+                <p><strong>Authors:</strong> {{ recommended_book['authors'] }}</p>
+                <p><strong>Publication Year:</strong> {{ recommended_book['original_publication_year'] }}</p>
+                <!-- Here we can add more details as needed -->
+            {% else %}
+                <p>No books were found associated with the selected tag.</p>
+            {% endif %}
+            <a href="/recommend" class="btn btn-secondary">Get Another Recommendation</a>
+        </div>
+    </div>
+</body>
+</html>
+
+<p>This is a paragraph too.</p>
