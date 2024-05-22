@@ -3,18 +3,24 @@
 <head>
     <title>Recommendation Form</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 </head>
 <body>
-    <h1>Recommendation Form</h1>
-    <form action="/recommend" method="post">
-        <label for="tag">Select a Tag:</label>
-        <select name="tag" id="tag">
-            {% for tag in top_tags %}
-                <option value="{{ tag }}">{{ tag }}</option>
-            {% endfor %}
-        </select>
-        <input type="submit" value="Submit">
-    </form>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h1 class="mb-4">Recommendation Form</h1>
+                <form action="/recommend" method="post">
+                    <label for="tag" class="mb-2">Select a Tag:</label>
+                    <select name="tag" id="tag" class="form-control mb-3">
+                        {% for tag in top_tags %}
+                            <option value="{{ tag }}">{{ tag }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-custom btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
