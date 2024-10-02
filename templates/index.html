@@ -1,20 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Recommendation App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .center-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            margin-top: 20px;
+        }
+        .book-info {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
+    {% block content %}
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="container center-content">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <h1 class="mb-4">Welcome to the Book Recommendation App!</h1>
-                <p class="lead mb-4">Click the button below to get a book recommendation based on a tag:</p>
+                <p class="lead mb-4">Click the button below to get a book recommendation based on your reading history:</p>
                 <a href="/recommend" class="btn btn-custom btn-lg">Get Recommendation</a>
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    {% endblock %}
+
 </body>
 </html>

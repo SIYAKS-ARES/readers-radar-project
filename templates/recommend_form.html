@@ -1,20 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Recommendation Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .center-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            margin-top: 20px;
+        }
+        .book-info {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
+    {% block content %}
+    {% extends "base.html" %}
+
+    {% block content %}
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <h1 class="mb-4">Recommendation Form</h1>
                 <form action="/recommend" method="post">
-                    <label for="tag" class="mb-2">Select a Tag:</label>
-                    <select name="tag" id="tag" class="form-control mb-3">
-                        {% for tag in top_tags %}
-                            <option value="{{ tag }}">{{ tag }}</option>
+                    <label for="user_books" class="mb-2">Select Books You Have Read and Liked:</label>
+                    <select name="user_books" id="user_books" multiple class="form-control mb-3">
+                        {% for book in books %}
+                            <option value="{{ book.book_id }}">{{ book.title }}</option>
                         {% endfor %}
                     </select>
                     <button type="submit" class="btn btn-custom btn-block">Submit</button>
@@ -22,5 +47,7 @@
             </div>
         </div>
     </div>
+    {% endblock %}
+
 </body>
 </html>
